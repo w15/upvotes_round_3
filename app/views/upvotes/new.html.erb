@@ -1,10 +1,33 @@
 <h1>Create a new Upvote</h1>
 
 
-
-
-<%= form_tag "/upvotes" do %>
+<%= form_for(@upvote) do |f| %>
   <div>
+    <%= f.label :user_id %>
+  </div>
+  <div>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= f.label :item_id %>
+  </div>
+  <div>
+    <%= f.text_field :item_id %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+
+<%#= form_tag "/upvotes" do %>
+<!--   <div>
     <label for="user_id">user_id</label>
   </div>
   <div>
@@ -21,8 +44,8 @@
 
   <div>
     <input type="submit">
-  </div>
-<% end %>
+  </div> -->
+<%# end %>
 
 
 

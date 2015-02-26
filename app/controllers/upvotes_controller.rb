@@ -1,6 +1,6 @@
 class UpvotesController < ApplicationController
   def new
-
+    @upvote = Upvote.new
   end
 
   def create
