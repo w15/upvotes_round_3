@@ -1,7 +1,32 @@
 <h1>Create a new Upvote</h1>
 
 
-<form action="/upvotes" method="post">
+
+
+<%= form_tag "/upvotes" do %>
+  <div>
+    <label for="user_id">user_id</label>
+  </div>
+  <div>
+    <input id="user_id" type="text" name="user_id">
+  </div>
+
+
+  <div>
+    <label for="item_id">item_id</label>
+  </div>
+  <div>
+    <input id="item_id" type="text" name="item_id">
+  </div>
+
+  <div>
+    <input type="submit">
+  </div>
+<% end %>
+
+
+
+<!-- <form action="/upvotes" method="post">
   <div>
     <label for="user_id">user_id</label>
   </div>
@@ -21,3 +46,4 @@
     <input type="submit">
   </div>
 </form>
+ -->
