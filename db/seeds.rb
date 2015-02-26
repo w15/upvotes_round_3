@@ -6,14 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.destroy_all
+
 10.times do
-  u = User.new
-  u.email = Faker::Internet.safe_email
-  u.password = "12341234"
-  u.password_confirmation = "12341234"
-  u.save
+  u = User.create(email: Faker::Internet.safe_email, password: "12341234", password_confirmation: "12341234")
 end
 
+puts "#{ User.count } users in the database"
 
 
 
