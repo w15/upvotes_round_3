@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'items#index'
+
+  resources :upvotes
+  resources :twinkies
+
   # Routes for the Item resource:
   # CREATE
   get '/items/new',      :controller => 'items', :action => 'new',    :as => 'new_item'
