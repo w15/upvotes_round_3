@@ -4,10 +4,7 @@ class UpvotesController < ApplicationController
   end
 
   def create
-    u = Upvote.new
-    u.item_id = params[:item_id]
-    u.user_id = params[:user_id]
-    u.save
+    u = Upvote.create(upvote_params)
 
     redirect_to upvote_url(u.id)
 
@@ -18,4 +15,9 @@ class UpvotesController < ApplicationController
   def show
     @upvote = Upvote.find(params[:id])
   end
+
+  def upvote_params
+    params.require(:upvote).permit(:item_id, :user_id)
+  end
+
 end
