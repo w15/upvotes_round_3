@@ -6,14 +6,14 @@
 
 <div>Followers:</div>
 <ul>
-  <% @user.followers.each do |user| %>
+  <% @user.follower_users.each do |user| %>
     <li><%= user.email %></li>
   <% end %>
 </ul>
 
 <div>Follows:</div>
 <ul>
-  <% @user.follows.each do |user| %>
+  <% @user.followed_users.each do |user| %>
     <li><%= user.email %></li>
   <% end %>
 </ul>

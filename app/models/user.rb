@@ -4,21 +4,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def third_user
-    "some line"
-
-  end
-
+  has_many :follow_relationships, class_name: "Relationship", foreign_key: 'follower_id'
+  has_many :followed_relationships, class_name: "Relationship", foreign_key: 'followed_id'
 
   def followers
       # return this user's followers
       # use the relationship model
 
-      relationships = Relationship.where(followed_id: self.id)
+      relationships = self.followed_relationships
 
       users = []
       relationships.each do |relationship|
-        users << User.find_by(id: relationship.follower_id)
+        users << relationship.follower_user
       end
 
       return users
@@ -27,11 +24,11 @@ class User < ActiveRecord::Base
   def follows
     # return all the users that this user follows
 
-    relationships = Relationship.where(follower_id: self.id)
+    relationships = self.follow_relationships
 
     users = []
     relationships.each do |relationship|
-      users << User.find_by(id: relationship.followed_id)
+      users << relationship.followed_user
     end
 
     return users
