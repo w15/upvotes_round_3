@@ -4,6 +4,13 @@
   Email: <%= @user.email %>
 </div>
 
+<div>Followers:</div>
+<ul>
+  <% @user.followers.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+</ul>
+
 <!-- Create a domain model that will let users have followers -->
 
 
