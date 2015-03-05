@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.desc {
+  display: inline-block;
+  font-size: 1.5em;
+  padding: 12px;
+}
