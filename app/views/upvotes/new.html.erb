@@ -6,18 +6,22 @@
     <%= f.label :user_id %>
   </div>
   <div>
-    <%= f.text_field :user_id %>
+    <%#= f.text_field :user_id %>
+    <input type="text" name="upvote[user_id]" id="upvote_user_id" />
   </div>
 
   <div>
     <%= f.label :item_id %>
   </div>
   <div>
-    <%= f.text_field :item_id %>
+    <!-- receate the text field below in pure html -->
+    <input type="text" name="upvote[item_id]" id="upvote_item_id" />
+    <%#= f.text_field :item_id %>
   </div>
 
   <div>
-    <%= f.submit %>
+    <%#= f.submit %>
+    <input type="submit" value="Create Upvote">
   </div>
 <% end %>
 
