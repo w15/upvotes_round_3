@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def third_user
+    "some line"
+
+  end
 
 
   def followers
@@ -22,6 +26,15 @@ class User < ActiveRecord::Base
 
   def follows
     # return all the users that this user follows
+
+    relationships = Relationship.where(follower_id: self.id)
+
+    users = []
+    relationships.each do |relationship|
+      users << User.find_by(id: relationship.followed_id)
+    end
+
+    return users
   end
 
 end
