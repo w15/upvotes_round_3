@@ -4,10 +4,12 @@ class UpvotesController < ApplicationController
   end
 
   def create
-    u = Upvote.create(upvote_params)
+    @upvote = Upvote.create(upvote_params)
 
-    redirect_to :back
-
+    respond_to do |format|
+      format.html {  redirect_to :back  }
+      format.js
+    end
     # Could also be written as:
     # redirect_to "upvotes/#{ u.id }"
   end

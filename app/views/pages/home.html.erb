@@ -22,7 +22,7 @@
   <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 isotope-item">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div>
+        <div class="item_<%= item.id %>">
           <% upvote = Upvote.where(user_id: current_user.id, item_id: item.id).first %>
           <% if upvote %>
             <!-- create a link to destroy the upvote -->
@@ -30,7 +30,7 @@
               <i class="fa fa-thumbs-up fa-lg"></i>
             </a>
           <% else %>
-            <%= form_for(Upvote.new) do |f| %>
+            <%= form_for(Upvote.new, remote: true) do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :item_id, value: item.id %>
               <button type="submit" class="btn btn-default">
