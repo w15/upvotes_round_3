@@ -22,7 +22,10 @@ class UpvotesController < ApplicationController
     @upvote = Upvote.find(params[:id])
     @upvote.destroy
 
-    redirect_to :back
+    respond_to do |format|
+      format.html {  redirect_to :back  }
+      format.js
+    end
   end
 
 
