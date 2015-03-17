@@ -23,12 +23,20 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div>
-          <%= form_for(Upvote.new) do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.hidden_field :item_id, value: item.id %>
-            <button type="submit" class="btn btn-default">
-              <i class="fa fa-thumbs-o-up fa-lg"></i>
-            </button>
+          <% upvote = Upvote.where(user_id: current_user.id, item_id: item.id).first %>
+          <% if upvote %>
+            <!-- create a link to destroy the upvote -->
+            <a href="/upvotes/<%= upvote.id %>" class="btn btn-default" data-method="delete">
+              <i class="fa fa-thumbs-up fa-lg"></i>
+            </a>
+          <% else %>
+            <%= form_for(Upvote.new) do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :item_id, value: item.id %>
+              <button type="submit" class="btn btn-default">
+                <i class="fa fa-thumbs-o-up fa-lg"></i>
+              </button>
+            <% end %>
           <% end %>
           <div class="desc"><%= item.desc %></div>
           <%= link_to item_url(item), :class => "btn btn-primary" do %>

@@ -6,7 +6,7 @@ class UpvotesController < ApplicationController
   def create
     u = Upvote.create(upvote_params)
 
-    redirect_to upvote_url(u.id)
+    redirect_to :back
 
     # Could also be written as:
     # redirect_to "upvotes/#{ u.id }"
@@ -15,6 +15,16 @@ class UpvotesController < ApplicationController
   def show
     @upvote = Upvote.find(params[:id])
   end
+
+  def destroy
+    @upvote = Upvote.find(params[:id])
+    @upvote.destroy
+
+    redirect_to :back
+  end
+
+
+
 
   def upvote_params
     params.require(:upvote).permit(:item_id, :user_id)
