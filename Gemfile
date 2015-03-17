@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'jquery-turbolinks'
 gem 'faker'
 gem 'devise'
 gem 'starter_generators', :git => 'git://github.com/rbetina/starter_generators', :branch => 'panels'
