@@ -26,12 +26,10 @@
           <%= form_for(Upvote.new) do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.hidden_field :item_id, value: item.id %>
-            <%= f.submit class: "btn btn-default" %>
+            <button type="submit" class="btn btn-default">
+              <i class="fa fa-thumbs-o-up fa-lg"></i>
+            </button>
           <% end %>
-
-          <a href="<%= new_upvote_url %>" class="btn btn-default">
-            <i class="fa fa-thumbs-o-up fa-lg"></i>
-          </a>
           <div class="desc"><%= item.desc %></div>
           <%= link_to item_url(item), :class => "btn btn-primary" do %>
             <i class="fa fa-search-plus"></i>
