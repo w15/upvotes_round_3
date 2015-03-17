@@ -20,6 +20,8 @@ class UpvotesController < ApplicationController
 
   def destroy
     @upvote = Upvote.find(params[:id])
+    @user_id = @upvote.user_id
+    @item_id = @upvote.item_id
     @upvote.destroy
 
     respond_to do |format|

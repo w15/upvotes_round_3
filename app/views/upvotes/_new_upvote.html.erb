@@ -1,0 +1,7 @@
+<%= form_for(Upvote.new, remote: true) do |f| %>
+  <%= f.hidden_field :user_id, value: user_id %>
+  <%= f.hidden_field :item_id, value: item_id %>
+  <button type="submit" class="btn btn-default">
+    <i class="fa fa-thumbs-o-up fa-lg"></i>
+  </button>
+<% end %>
